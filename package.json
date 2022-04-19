@@ -1,7 +1,7 @@
 {
   "name": "dumfunctions",
-  "version": "1.0.0",
-  "description": "A package for JS functions that should be in the main language.",
+  "version": "1.0.1",
+  "description": "A package for JS functions that should be in the main language but aren't.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

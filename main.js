@@ -9,10 +9,6 @@
 function randomNumber(minimum, maximum) {
     if (maximum === undefined) { maximum = minimum; minimum = 0; }
 
-    if (typeof minimum != 'number') return console.error(new Error('Minimum number is not a number.'));
-
-    if (typeof maximum != 'number' && maximum != undefined) return console.error(new Error('Maximum number is not a number.'));
-
     return Math.floor(Math.random() * Math.floor(maximum) + minimum);
 };
 
@@ -24,7 +20,6 @@ function randomNumber(minimum, maximum) {
  * @returns a break in the code before continuing.
  */
 async function delay(milliseconds) {
-    if (typeof milliseconds != 'number') return console.error(new Error('Delay is not a number.'));
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
 
@@ -36,9 +31,8 @@ async function delay(milliseconds) {
  * @returns a converted string with each word capitalized.
  */
 function title(string, lowercase = false) {
-    if (typeof string != 'string') return console.log(new Error('Title is not a string.'));
-    if (lowercase == true) string = string.toLowerCase();
-    return string.split(/ +/g).map(word => string = word.slice(0, 1).toUpperCase() + word.slice(1)).join(' ');
+    if (lowercase == true) string = string?.toLowerCase();
+    return string?.toString()?.split(/ +/g)?.map(word => word?.slice(0, 1).toUpperCase() + word?.slice(1)).join(' ');
 
 }
 
@@ -50,9 +44,8 @@ function title(string, lowercase = false) {
  * @returns a converted string with the first word being capitalized.
  */
 function capitalize(string, lowercase = false) {
-    if (typeof string != 'string') return console.log(new Error('Capitalize is not a string.'));
-    if (lowercase == true) string = string.toLowerCase();
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    if (lowercase == true) string = string?.toLowerCase();
+    return string?.toString()?.charAt(0)?.toUpperCase() + string?.toString()?.slice(1);
 }
 
 /**
@@ -61,11 +54,11 @@ function capitalize(string, lowercase = false) {
  * @returns type of random color
  */
 function randomColor(type) {
-    if (type.toLowerCase() == 'rgb') {
+    if (type?.toString()?.toLowerCase() == 'rgb') {
         let r = () => Math.random() * 256 >> 0;
         return `rgb(${r()}, ${r()}, ${r()})`;
     }
-    if (type.toLowerCase() == 'hex') {
+    if (type?.toString()?.toLowerCase() == 'hex') {
         let hex = '0123456789ABCDEF';
         let color = '';
         for (let i = 0; i < 6; i++) {
@@ -73,7 +66,7 @@ function randomColor(type) {
         }
         return color;
     }
-    else return console.error(new Error('type is not recognised.'))
+    else return undefined;
 }
 
 module.exports = {
