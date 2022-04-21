@@ -8,45 +8,8 @@
  */
 function randomNumber(minimum, maximum) {
     if (maximum === undefined) { maximum = minimum; minimum = 0; }
-
     return Math.floor(Math.random() * Math.floor(maximum) + minimum);
 };
-
-/**
- * @param {number} milliseconds - The amount of milliseconds the code should wait.
- * @type {number}
- * @required
- * @async
- * @returns a break in the code before continuing.
- */
-async function delay(milliseconds) {
-    return new Promise((resolve) => setTimeout(resolve, milliseconds));
-}
-
-/**
- * 
- * @param {string} string - The string you want to be converted.
- * @required
- * @param {boolean} lowercase - Lower case the string before converting it.
- * @returns a converted string with each word capitalized.
- */
-function title(string, lowercase = false) {
-    if (lowercase == true) string = string?.toLowerCase();
-    return string?.toString()?.split(/ +/g)?.map(word => word?.slice(0, 1).toUpperCase() + word?.slice(1)).join(' ');
-
-}
-
-/**
- * 
- * @param {string} string - The string you want to get converted.
- * @required
- * @param {boolean} lowercase - Lower case the string before being converted.
- * @returns a converted string with the first word being capitalized.
- */
-function capitalize(string, lowercase = false) {
-    if (lowercase == true) string = string?.toLowerCase();
-    return string?.toString()?.charAt(0)?.toUpperCase() + string?.toString()?.slice(1);
-}
 
 /**
  * 
@@ -69,23 +32,115 @@ function randomColor(type) {
     else return undefined;
 }
 
+/**
+ * 
+ * @param {object} object - Object or Array; 
+ * @returns a random element of an object or array;
+ */
+function randomElement(object) {
+    if (Array.isArray(object)) {
+        return object[randomNumber(object.length)]
+    }
+
+    if (typeof object == 'object') {
+        const random = randomNumber(Object.keys(object).length)
+        return { object: { [Object.keys(object)[random]]: Object.values(object)[random] }, key: Object.keys(object)[random], value: Object.values(object)[random] }
+    }
+
+    else return undefined;
+}
+
+
+/**
+ * 
+ * @param {object} object - Object or Array;
+ * @returns a randomized array.
+ */
+function randomizeElements(object) {
+    if (Array.isArray(object)) {
+        const array = [];
+        object = Array.from(object);
+        while (object.length > 0) {
+            array.push(object.splice(randomNumber(object.length), 1)[0])
+        }
+        return array;
+    }
+
+    if (typeof object == 'object') {
+        const array = [];
+        object = Object.entries(object).map((a) => { return { [a[0]]: a[1] } })
+        while (object.length > 0) {
+            array.push(object.splice(randomNumber(object.length), 1)[0])
+        }
+        return array;
+    }
+
+    else return undefined;
+}
+
+/**
+ * @param {number} milliseconds - The amount of milliseconds the code should wait.
+ * @type {number}
+ * @required
+ * @async
+ * @returns a break in the code before continuing.
+ */
+async function delay(milliseconds) {
+    return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+/**
+ * 
+ * @param {string} string - The string you want to be converted.
+ * @required
+ * @param {boolean} lowercase - Lower case the string before converting it.
+ * @returns a converted string with the first letter of each word capitalized.
+ */
+function toTitleCase(string, lowercase = false) {
+    if (lowercase == true) string = string?.toString()?.toLowerCase();
+    return string?.toString()?.split(/ +/g)?.map(word => word?.slice(0, 1).toUpperCase() + word?.slice(1)).join(' ');
+
+}
+
+/**
+ * 
+ * @param {string} string - The string you want to get converted.
+ * @required
+ * @param {boolean} lowercase - Lower case the string before being converted.
+ * @returns a converted string with the first letter of the string being capitalized.
+ */
+function toStringCase(string, lowercase = false) {
+    if (lowercase == true) string = string?.toString()?.toLowerCase();
+    return string?.toString()?.charAt(0)?.toUpperCase() + string?.toString()?.slice(1);
+}
+
+/**
+ * 
+ * @param {string} string - The string you want to get converted.
+ * @param {boolean} lowercase - Loower case the string before converting.
+ * @returns a converted string with the first letter of each phrase being capitalized.
+ */
+function toPhraseCase(string, lowercase = false) {
+    if (lowercase == true) string = string?.toString()?.toLowerCase();
+    return string?.toString()?.split(/[!?.]/gi).map(phrase => phrase?.toString().charAt(0)?.toUpperCase() + phrase?.toString()?.slice(1)).join(" ");
+}
+
+
 module.exports = {
-    // Random Number
+    // randoms
     randomNumber: randomNumber,
-    ranNum: randomNumber,
+    randomColor: randomColor,
+    randomElement: randomElement,
+    randomizeElements: randomizeElements,
 
     // Delay
     delay: delay,
     sleep: delay,
     wait: delay,
 
-    // Title
-    title: title,
+    // Strings
+    toPhraseCase: toPhraseCase,
+    toTitleCase: toTitleCase,
+    toStringCase: toStringCase
 
-    // Capitalize
-    capitalize: capitalize,
-
-    // RandomColor
-    randomColor: randomColor,
-    ranCol: randomColor,
 };
