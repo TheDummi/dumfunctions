@@ -1,29 +1,29 @@
-export default new class NewMath {
-    E: number;
-    LN10: number;
-    LN2: number;
-    LOG10E: number
-    LOG2E: number
-    PI: number
-    SQRT1_2: number
-    SQRT2: number
+export default new (class NewMath {
+    public E: number;
+    public LN10: number;
+    public LN2: number;
+    public LOG10E: number;
+    public LOG2E: number;
+    public PI: number;
+    public SQRT1_2: number;
+    public SQRT2: number;
 
     constructor() {
         this.E = Math.E;
 
-        this.LN10 = Math.LN10
+        this.LN10 = Math.LN10;
 
-        this.LN2 = Math.LN2
+        this.LN2 = Math.LN2;
 
-        this.LOG10E = Math.LOG10E
+        this.LOG10E = Math.LOG10E;
 
-        this.LOG2E = Math.LOG2E
+        this.LOG2E = Math.LOG2E;
 
-        this.PI = Math.PI
+        this.PI = Math.PI;
 
-        this.SQRT1_2 = Math.SQRT1_2
+        this.SQRT1_2 = Math.SQRT1_2;
 
-        this.SQRT2 = Math.SQRT2
+        this.SQRT2 = Math.SQRT2;
 
         this.abs = this.abs;
 
@@ -154,7 +154,7 @@ export default new class NewMath {
 
     dif(...numbers: Array<number>) {
         if (numbers.length <= 0) return NaN;
-        else return numbers.reduce((x, y) => x -= y)
+        else return numbers.reduce((x, y) => (x -= y));
     }
 
     exp(number: number) {
@@ -211,14 +211,16 @@ export default new class NewMath {
 
     random(x?: number, y?: number) {
         if (x) {
-            if (y === undefined) { y = x; x = 0 }
-            return Math.floor(Math.random() * Math.floor(y) + x)
-        }
-        else return Math.random();
+            if (y === undefined) {
+                y = x;
+                x = 0;
+            }
+            return Math.floor(Math.random() * Math.floor(y) + x);
+        } else return Math.random();
     }
 
     round(number: number) {
-        return Math.round(number)
+        return Math.round(number);
     }
 
     shuffle(...numbers: Array<number>) {
@@ -226,11 +228,10 @@ export default new class NewMath {
             const array = [];
             numbers = Array.from(numbers);
             while (numbers.length > 0) {
-                array.push(numbers.splice(this.random(numbers.length), 1)[0])
+                array.push(numbers.splice(this.random(numbers.length), 1)[0]);
             }
             return array;
-        }
-        else return NaN;
+        } else return NaN;
     }
 
     sign(number: number) {
@@ -247,7 +248,7 @@ export default new class NewMath {
 
     sum(...numbers: Array<number>) {
         if (numbers.length <= 0) return NaN;
-        else return numbers.reduce((x, y) => x += y)
+        else return numbers.reduce((x, y) => (x += y));
     }
 
     sqrt(number: number) {
@@ -263,6 +264,6 @@ export default new class NewMath {
     }
 
     trunc(number: number) {
-        return Math.trunc(number)
+        return Math.trunc(number);
     }
-}
+})();

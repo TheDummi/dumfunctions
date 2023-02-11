@@ -1,6 +1,6 @@
-import Math from "./models/Math.js";
-import Random from "./models/Random.js";
-import Style from "./models/Style.js";
+import Math from './models/Math.js';
+import Random from './models/Random.js';
+import Style from './models/Style.js';
 
 async function delay(milliseconds: number) {
     return new Promise((resolve) => setTimeout(resolve, milliseconds));
@@ -9,11 +9,7 @@ async function delay(milliseconds: number) {
 export default {
     Math,
     Random,
-    Style
-}
+    Style,
+};
 
-export {
-    Math,
-    Random,
-    Style
-}
+export { Math, Random, Style };

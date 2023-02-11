@@ -25,7 +25,7 @@ export enum TextColor {
     LightBlue = 94,
     Violet = 95,
     Turquoise = 96,
-    White = 97
+    White = 97,
 }
 
 export enum BackgroundColor {
@@ -45,13 +45,13 @@ export enum BackgroundColor {
     LightBlue = 104,
     Violet = 105,
     Turquoise = 106,
-    White = 107
+    White = 107,
 }
 
-export default new class Style {
-    TextStyle: typeof TextStyle
-    TextColor: typeof TextColor;
-    BackgroundColor: typeof BackgroundColor;
+export default new (class Style {
+    public TextStyle: typeof TextStyle;
+    public TextColor: typeof TextColor;
+    public BackgroundColor: typeof BackgroundColor;
 
     constructor() {
         this.TextStyle = TextStyle;
@@ -63,12 +63,20 @@ export default new class Style {
 
     titleCase(string: string, lowercase: boolean = false) {
         if (lowercase == true) string = string?.toString()?.toLowerCase();
-        return string?.toString()?.split(/ +/g)?.map(word => word?.slice(0, 1).toUpperCase() + word?.slice(1)).join(' ');
+        return string
+            ?.toString()
+            ?.split(/ +/g)
+            ?.map((word) => word?.slice(0, 1).toUpperCase() + word?.slice(1))
+            .join(' ');
     }
 
     pascalCase(string: string, lowercase: boolean = false) {
         if (lowercase == true) string = string?.toString()?.toLowerCase();
-        return string?.toString()?.split(/ +/g)?.map(word => word?.slice(0, 1).toUpperCase() + word?.slice(1)).join(' ');
+        return string
+            ?.toString()
+            ?.split(/ +/g)
+            ?.map((word) => word?.slice(0, 1).toUpperCase() + word?.slice(1))
+            .join(' ');
     }
 
     stringCase(string: string, lowercase: boolean = false) {
@@ -78,12 +86,15 @@ export default new class Style {
 
     phraseCase(string: string, lowercase: boolean = false) {
         if (lowercase == true) string = string?.toString()?.toLowerCase();
-        return string?.toString()?.split(/[!?.]/gi).map(phrase => phrase?.toString().charAt(0)?.toUpperCase() + phrase?.toString()?.slice(1)).join(" ");
-
+        return string
+            ?.toString()
+            ?.split(/[!?.]/gi)
+            .map((phrase) => phrase?.toString().charAt(0)?.toUpperCase() + phrase?.toString()?.slice(1))
+            .join(' ');
     }
 
     log(text: string, options: LogOptions) {
-        const styling = { color: "", style: "" };
+        const styling = { color: '', style: '' };
 
         if (options?.color) styling.color = `\u001b[${options.color}m`;
 
@@ -91,9 +102,9 @@ export default new class Style {
 
         return `${styling.color}${styling.style}${text}\u001b[0;0m`;
     }
-}
+})();
 
 export interface LogOptions {
-    style?: TextStyle
-    color?: BackgroundColor | TextColor
+    style?: TextStyle;
+    color?: BackgroundColor | TextColor;
 }
