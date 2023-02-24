@@ -1,11 +1,13 @@
 {
 	"name": "dumfunctions",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "A package for JS functions that should be in the main language but aren't.",
-	"main": "dist/main.js",
-	"type": "module",
+	"main": "dist/cjs/main.js",
+	"module": "dist/mjs/main.js",
 	"scripts": {
-		"test": "echo This is a JS functions module."
+		"build": "npm run build:esm && npm run build:cjs && npx prettier --write src dist",
+		"build:esm": "tsc",
+		"build:cjs": "tsc --module CommonJS --outDir dist/cjs"
 	},
 	"repository": {
 		"type": "git",
