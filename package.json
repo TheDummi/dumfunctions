@@ -1,25 +1,25 @@
 {
-	"name": "dumfunctions",
-	"version": "2.0.1",
-	"description": "A package for JS functions that should be in the main language but aren't.",
-	"main": "dist/cjs/main.js",
-	"module": "dist/mjs/main.js",
-	"scripts": {
-		"build": "npm run build:esm && npm run build:cjs && npx prettier --write src dist",
-		"build:esm": "tsc",
-		"build:cjs": "tsc --module CommonJS --outDir dist/cjs"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/TheDummi/DummiFuncs.git"
-	},
-	"keywords": [
-		"JSfunctions"
-	],
-	"author": "Dummi",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/TheDummi/DummiFuncs/issues"
-	},
-	"homepage": "https://github.com/TheDummi/DummiFuncs#readme"
+    "name": "dumfunctions",
+    "version": "2.1.2",
+    "description": "A package for JS functions that should be in the main language but aren't.",
+    "main": "dist/cjs/main.js",
+    "module": "dist/mjs/main.js",
+    "scripts": {
+        "build": "npm run build:esm && npm run build:cjs && npx prettier --write src dist",
+        "build:esm": "tsc",
+        "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TheDummi/DummiFuncs.git"
+    },
+    "keywords": [
+        "JSfunctions"
+    ],
+    "author": "Dummi",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/TheDummi/DummiFuncs/issues"
+    },
+    "homepage": "https://github.com/TheDummi/DummiFuncs#readme"
 }
