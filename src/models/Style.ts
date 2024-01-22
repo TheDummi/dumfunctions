@@ -76,7 +76,7 @@ export default new (class Style {
             ?.toString()
             ?.split(/ +/g)
             ?.map((word) => word?.slice(0, 1).toUpperCase() + word?.slice(1))
-            .join(' ');
+            .join('');
     }
 
     stringCase(string: string, lowercase: boolean = false) {
