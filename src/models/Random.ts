@@ -26,6 +26,4 @@ export default new (class Random {
             };
         } else return undefined;
     }
-
-    #color() {}
 })();
