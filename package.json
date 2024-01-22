@@ -1,6 +1,6 @@
 {
     "name": "dumfunctions",
-    "version": "2.1.2",
+    "version": "2.1.3",
     "description": "A package for JS functions that should be in the main language but aren't.",
     "main": "dist/cjs/main.js",
     "module": "dist/mjs/main.js",
